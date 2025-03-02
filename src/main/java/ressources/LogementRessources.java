@@ -45,10 +45,32 @@ import java.util.List;
     public Response addLogement(Logement logement) {
         if (L.addLogement(logement)) {
             return Response.status(200).entity("Added with success").build();
-
         }
         return Response.status(404).entity("not added").build();
-
     }
+
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("modify/{reference}")
+    public Response modifyLogement(@PathParam("reference") int reference, Logement logement) {
+        if (L.updateLogement(reference, logement)) {
+            return Response.status(200).entity("Modified successfully").build();
+        }
+        return Response.status(404).entity("Modification failed").build();
+    }
+
+
+    @DELETE
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("delete/{reference}")
+    public Response deleteLogement(@PathParam("reference") int reference) {
+        if (L.deleteLogement(reference)) {
+            return Response.status(200).entity("Deleted successfully").build();
+        }
+        return Response.status(404).entity("Deletion failed").build();
+    }
+
+
 
 }
