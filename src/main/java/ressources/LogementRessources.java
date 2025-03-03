@@ -2,6 +2,7 @@ package ressources;
 
 
 import entities.Logement;
+import filtres.Secured;
 import metiers.LogementBusiness;
 
 import javax.ws.rs.*;
@@ -16,6 +17,7 @@ import java.util.List;
     public static LogementBusiness L = new LogementBusiness();
 
 
+    @Secured
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("list")
