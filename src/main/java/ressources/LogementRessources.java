@@ -61,6 +61,7 @@ import java.util.List;
     }
 
 
+
     @DELETE
     @Produces(MediaType.TEXT_PLAIN)
     @Path("delete/{reference}")
